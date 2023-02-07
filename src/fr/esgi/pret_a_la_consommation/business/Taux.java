@@ -5,18 +5,25 @@ import java.util.Comparator;
 public class Taux implements Comparator<Taux> {
     //attributs
 
-    private long id;
+    private final long id;
     private double valeur;
     private static long compteur = 0L;
+    private Duree duree;
+    private Motif motif;
 
     /**
      * Constructeur d'un taux
+     *
      * @param valeur Valeur du taux du prêt
+     * @param duree Durée sur lequel le taux est associé
+     * @param motif Motif asssocié au taux
      * @author romaingojard
      */
-    public Taux(double valeur) {
+    public Taux(double valeur, Duree duree, Motif motif) {
         this.id = ++compteur;
         this.valeur = valeur;
+        this.duree = duree;
+        this.motif = motif;
     }
 
     public long getId() {
@@ -39,6 +46,12 @@ public class Taux implements Comparator<Taux> {
                 '}';
     }
 
+    /**
+     *
+     * @param o1 the first object to be compared.
+     * @param o2 the second object to be compared.
+     * @return
+     */
     @Override
     public int compare(Taux o1, Taux o2) {
         return 0;

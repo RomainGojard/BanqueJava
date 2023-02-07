@@ -9,11 +9,12 @@ public class Mensualite implements Comparator<Mensualite> {
      * Classe qui caractérise une mensualité d'un prêt
      */
 
-    private long id;
+    private final long id;
     private LocalDate datePrelevement;
     private double partInteretsRembourses;
     private double partCapitalRembourses;
     private static long compteur = 0L;
+    private Pret pret;
 
     /**
      * Constructeur d'une mensualité
@@ -21,13 +22,15 @@ public class Mensualite implements Comparator<Mensualite> {
      * @param datePrelevement        Date du prélèvement
      * @param partInteretsRembourses part d'intérêt remboursés
      * @param partCapitalRembourses  part de capital remboursés
+     * @param pret Prêt associé à la mensualité
      * @author romaingojard
      */
-    public Mensualite(LocalDate datePrelevement, double partInteretsRembourses, double partCapitalRembourses) {
+    public Mensualite(LocalDate datePrelevement, double partInteretsRembourses, double partCapitalRembourses, Pret pret) {
         this.id = ++compteur;
         this.datePrelevement = datePrelevement;
         this.partInteretsRembourses = partInteretsRembourses;
         this.partCapitalRembourses = partCapitalRembourses;
+        this.pret = pret;
     }
 
     public long getId() {

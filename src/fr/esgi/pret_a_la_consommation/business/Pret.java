@@ -14,6 +14,32 @@ public class Pret {
     private String observations;
     private static long compteur = 0L;
 
+    private Client client;
+    private Taux taux;
+
+    /**
+     * Constructeur Pret
+     * @param id id du prêt
+     * @param montantDemande Montant prêté
+     * @param montantMensualite Montant de chaque mensualité
+     * @param dateSouscription Date de la souscription du prêt
+     * @param dateEffet Date d'effet du prêt => Date de première mensualité ou du montant viré ?
+     * @param observations Observations
+     * @param client Client auquel le prêt est associé
+     * @param taux Taux auquel le prêt est associé
+     * @author romaingojard
+     */
+    public Pret(long id, long montantDemande, long montantMensualite, LocalTime dateSouscription, LocalDate dateEffet, String observations, Client client, Taux taux) {
+        this.id = ++compteur;
+        this.montantDemande = montantDemande;
+        this.montantMensualite = montantMensualite;
+        this.dateSouscription = dateSouscription;
+        this.dateEffet = dateEffet;
+        this.observations = observations;
+        this.client = client;
+        this.taux = taux;
+    }
+
     //getter
     public long getId() {
         return id;
@@ -55,8 +81,5 @@ public class Pret {
     }
     public void setObservations(String observations) {
         this.observations = observations;
-    }
-    public static void setCompteur(long compteur) {
-        Pret.compteur = compteur;
     }
 }
