@@ -36,6 +36,7 @@ public class Motif {
         Motif.compteur = compteur;
     }
 
+    // compteur
     public Motif() {
         id = ++compteur;
     }
