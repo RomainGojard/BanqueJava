@@ -15,14 +15,35 @@ public class MensualiteServiceImpl implements MensualiteService {
         return mensualite;
     }
 
-    // TODO: 08/02/2023 - Créer la méthode qui crée toutes les mensualités d'un prêt 
+    // TODO: 08/02/2023 - Créer la méthode qui crée toutes les mensualités d'un prêt
     
     @Override
-    public Mensualite ajouterMensualite(Pret pret) {
-        int nbMensualite = pret.getTaux().getDuree().getDureeEnMois();
+    public ArrayList<Mensualite> ajouterMensualite(Pret pret) {
+        // Liste qui contiendra toutes les mensualités de ce prêt, qui sera retournée dans le return
+        ArrayList<Mensualite> mensualitesDuPret = new ArrayList<Mensualite>();
 
-        Mensualite mensualite = null;
-        
-        return mensualite;
+        // Nombre de mensualités pour le taux du prêt
+        int nbMensualites = pret.getTaux().getDuree().getDureeEnMois();
+
+        // captial du prêt demandé
+        long capital = pret.getMontantDemande();
+
+        // tauc annuel et mensuel du prêt
+        double interetAnnuel = pret.getTaux().getValeur();
+        double interetMensuel = interetAnnuel / nbMensualites;
+
+        // montant de la mensualité définit lors de la création du prêt
+        double mensualite = pret.getMontantMensualite();
+        double partCapital = 0;
+        double partInteret ;
+
+        for (int i = 0; i < nbMensualites ; i++) {
+            partInteret = (capital - partCapital) * interetMensuel;
+            partCapital += mensualite - partInteret ;
+
+            // TODO: 08/02/2023 : créer la mensualité, l'ajouter à la liste des mensualités et à la liste des mensualités du prêt
+        }
+
+        return mensualitesDuPret;
     }
 }
