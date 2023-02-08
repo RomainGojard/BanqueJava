@@ -34,6 +34,14 @@ public class Taux implements Comparator<Taux> {
         return valeur;
     }
 
+    public Duree getDuree() {
+        return duree;
+    }
+
+    public Motif getMotif() {
+        return motif;
+    }
+
     /**
      *
      * @return to string

@@ -1,7 +1,7 @@
 package fr.esgi.pret_a_la_consommation.business;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class Pret {
 
@@ -9,7 +9,7 @@ public class Pret {
     private long id;
     private long montantDemande;
     private long montantMensualite;
-    private LocalTime dateSouscription;
+    private LocalDateTime dateSouscription;
     private LocalDate dateEffet;
     private String observations;
     private static long compteur = 0L;
@@ -19,7 +19,6 @@ public class Pret {
 
     /**
      * Constructeur Pret
-     * @param id id du prêt
      * @param montantDemande Montant prêté
      * @param montantMensualite Montant de chaque mensualité
      * @param dateSouscription Date de la souscription du prêt
@@ -29,7 +28,7 @@ public class Pret {
      * @param taux Taux auquel le prêt est associé
      * @author romaingojard
      */
-    public Pret(long id, long montantDemande, long montantMensualite, LocalTime dateSouscription, LocalDate dateEffet, String observations, Client client, Taux taux) {
+    public Pret(long montantDemande, long montantMensualite, LocalDateTime dateSouscription, LocalDate dateEffet, String observations, Client client, Taux taux) {
         this.id = ++compteur;
         this.montantDemande = montantDemande;
         this.montantMensualite = montantMensualite;
@@ -50,7 +49,7 @@ public class Pret {
     public long getMontantMensualite() {
         return montantMensualite;
     }
-    public LocalTime getDateSouscription() {
+    public LocalDateTime getDateSouscription() {
         return dateSouscription;
     }
     public LocalDate getDateEffet() {
@@ -63,6 +62,14 @@ public class Pret {
         return compteur;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public Taux getTaux() {
+        return taux;
+    }
+
     //setter
     public void setId(long id) {
         this.id = id;
@@ -73,7 +80,7 @@ public class Pret {
     public void setMontantMensualite(long montantMensualite) {
         this.montantMensualite = montantMensualite;
     }
-    public void setDateSouscription(LocalTime dateSouscription) {
+    public void setDateSouscription(LocalDateTime dateSouscription) {
         this.dateSouscription = dateSouscription;
     }
     public void setDateEffet(LocalDate dateEffet) {

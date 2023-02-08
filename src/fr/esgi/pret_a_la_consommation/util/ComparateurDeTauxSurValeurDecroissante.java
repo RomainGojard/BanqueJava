@@ -9,7 +9,8 @@ public class ComparateurDeTauxSurValeurDecroissante implements Comparator<Taux> 
      *
      * @param taux1 the first object to be compared.
      * @param taux2 the second object to be compared.
-     * @return comparaison de deux taux ed manière décroissante
+     * @return comparaison de deux taux de manière décroissante
+     * @author romaingojard
      */
     @Override
     public int compare(Taux taux1, Taux taux2) {
