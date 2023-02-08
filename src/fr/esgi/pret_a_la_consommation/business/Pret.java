@@ -8,7 +8,7 @@ public class Pret {
     //attributs
     private long id;
     private long montantDemande;
-    private long montantMensualite;
+    private double montantMensualite;
     private LocalDateTime dateSouscription;
     private LocalDate dateEffet;
     private String observations;
@@ -28,7 +28,7 @@ public class Pret {
      * @param taux Taux auquel le prêt est associé
      * @author romaingojard
      */
-    public Pret(long montantDemande, long montantMensualite, LocalDateTime dateSouscription, LocalDate dateEffet, String observations, Client client, Taux taux) {
+    public Pret(long montantDemande, double montantMensualite, LocalDateTime dateSouscription, LocalDate dateEffet, String observations, Client client, Taux taux) {
         this.id = ++compteur;
         this.montantDemande = montantDemande;
         this.montantMensualite = montantMensualite;
@@ -46,7 +46,7 @@ public class Pret {
     public long getMontantDemande() {
         return montantDemande;
     }
-    public long getMontantMensualite() {
+    public double getMontantMensualite() {
         return montantMensualite;
     }
     public LocalDateTime getDateSouscription() {
@@ -77,7 +77,7 @@ public class Pret {
     public void setMontantDemande(long montantDemande) {
         this.montantDemande = montantDemande;
     }
-    public void setMontantMensualite(long montantMensualite) {
+    public void setMontantMensualite(double montantMensualite) {
         this.montantMensualite = montantMensualite;
     }
     public void setDateSouscription(LocalDateTime dateSouscription) {

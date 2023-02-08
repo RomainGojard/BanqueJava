@@ -23,13 +23,15 @@ public class PretServiceImpl implements PretService {
 
         // TODO: 08/02/2023 - définir le montant de chaque mensualité selon le taux en paramètre, définir la date d'effet (1er jour du prochain mois) et lancer al création de mensualité
 
-        long montantMensualite = 0 ;
-        LocalDate dateEfet = null;
+        double interetAnnuel = (taux.getValeur()/100);
+        double interetMensuel = interetAnnuel / 12;
 
-        Pret pret = new Pret(montantDemande, montantMensualite, dateSouscription, dateEfet, observations, client, taux );
+        double montantMensualite = (montantDemande * interetMensuel) / (1 - Math.pow((1 + interetMensuel), -taux.getDuree().getDureeEnMois()));
+
+        LocalDate dateEffet = null;
+
+        Pret pret = new Pret(montantDemande, montantMensualite, dateSouscription, dateEffet, observations, client, taux );
         prets.add(pret);
-
-
 
         return pret;
 

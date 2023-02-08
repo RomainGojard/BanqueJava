@@ -9,5 +9,5 @@ public interface MensualiteService {
 
     Mensualite ajouterMensualite (Mensualite mensualite);
 
-    ArrayList<Mensualite> ajouterMensualite (Pret pret);
+    ArrayList<Mensualite> creerMensualitesDuPret(Pret pret);
 }
