@@ -14,4 +14,7 @@ public interface PretService {
     Pret ajouterPret(Pret pret);
 
     Pret ajouterPret(long montantDemande, LocalDateTime dateSouscription, String observations, Client client, Taux taux);
+
+    // TODO: 09/02/2023 - Méthode recupererPrets , recupererPretsTrierSur(String) --> utiliser un comparateur dans la classe util pour ça  , afficherPret
 }
+

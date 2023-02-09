@@ -27,7 +27,7 @@ public class MensualiteServiceImpl implements MensualiteService {
     @Override
     public ArrayList<Mensualite> creerMensualitesDuPret(Pret pret) {
         // Liste qui contiendra toutes les mensualités de ce prêt, qui sera retournée dans le return
-        ArrayList<Mensualite> mensualitesDuPret = new ArrayList<Mensualite>();
+        ArrayList<Mensualite> mensualitesDuPret = new ArrayList<>();
 
         // Nombre de mensualités pour le taux du prêt
         int nbMensualites = pret.getTaux().getDuree().getDureeEnMois();

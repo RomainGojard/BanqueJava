@@ -21,8 +21,6 @@ public class PretServiceImpl implements PretService {
     @Override
     public Pret ajouterPret(long montantDemande, LocalDateTime dateSouscription, String observations, Client client, Taux taux) {
 
-        // TODO: 08/02/2023 - définir le montant de chaque mensualité selon le taux en paramètre, définir la date d'effet (1er jour du prochain mois) et lancer al création de mensualité
-
         double interetAnnuel = (taux.getValeur()/100);
         double interetMensuel = interetAnnuel / 12;
 
@@ -34,6 +32,8 @@ public class PretServiceImpl implements PretService {
         prets.add(pret);
 
         return pret;
-
     }
+
+
+
 }
