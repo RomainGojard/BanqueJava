@@ -11,20 +11,27 @@ import java.util.ArrayList;
 public class MensualiteServiceImpl implements MensualiteService {
     private static ArrayList<Mensualite> mensualites = new ArrayList<>();
 
+    /**
+     * Ajoute une mensualité à la liste
+     * @param mensualite
+     * @return la mensualité ajoutée
+     */
     @Override
     public Mensualite ajouterMensualite(Mensualite mensualite) {
         mensualites.add(mensualite);
         return mensualite;
     }
-
-    // TODO: 08/02/2023 - Créer la méthode qui crée toutes les mensualités d'un prêt
-
     /**
      * Méthode qui crée toutes les mensualités du prêt avec leur date et part de capital / intérêt
      *
      * @param pret Le prêt auquel est associée la mensualité
      * @return La liste des mensualités pour ce prêt
      * @author romaingojard
+     */
+    /**
+     * Crée les mensualités d'un prêt donné
+     * @param pret objet Pret
+     * @return mensualités créées
      */
     @Override
     public ArrayList<Mensualite> creerMensualitesDuPret(Pret pret) {

@@ -2,5 +2,7 @@ package fr.esgi.pret_a_la_consommation.exceptions;
 
 public class DureeExcessiveException extends RuntimeException{
 
-    // TODO: 09/02/2023 Exception levée lorsque l'on crée un un taux avec une date trop élevée ( sup à 20 par ex ) 
+    public DureeExcessiveException(String message){
+        super("La date entrée est invalide" + message);
+    }
 }

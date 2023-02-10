@@ -97,6 +97,10 @@ public class Pret {
         return getId() == pret.getId() && getMontantDemande() == pret.getMontantDemande() && Double.compare(pret.getMontantMensualite(), getMontantMensualite()) == 0 && Objects.equals(getDateSouscription(), pret.getDateSouscription()) && Objects.equals(getDateEffet(), pret.getDateEffet()) && Objects.equals(getObservations(), pret.getObservations()) && Objects.equals(getClient(), pret.getClient()) && Objects.equals(getTaux(), pret.getTaux());
     }
 
+    /**
+     *
+     * @return Hash de
+     */
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getMontantDemande(), getMontantMensualite(), getDateSouscription(), getDateEffet(), getObservations(), getClient(), getTaux());

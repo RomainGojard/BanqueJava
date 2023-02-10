@@ -15,10 +15,10 @@ public class ClientServiceImpl implements ClientService {
      * @return nouveau client
      */
     /**
-     * Création d'un
-     * @param nom
-     * @param prenom
-     * @return
+     * Création d'un client
+     * @param nom String
+     * @param prenom String
+     * @return client créé - objet Client
      */
     @Override
     public Client creerClient(String nom, String prenom){
@@ -42,6 +42,10 @@ public class ClientServiceImpl implements ClientService {
         return null;
     }
 
+    /**
+     * Affiche le client
+     * @return String
+     */
     @Override
     public String afficherClients() {
         String affiche= "";

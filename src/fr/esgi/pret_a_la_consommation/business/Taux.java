@@ -51,7 +51,6 @@ public class Taux implements Comparator<Taux> {
                 " " + motif.toString();
     }
 
-
     /**
      * @param o1 the first object to be compared.
      * @param o2 the second object to be compared.
@@ -62,8 +61,4 @@ public class Taux implements Comparator<Taux> {
 
         return 0;
     }
-
-    /*@Override
-    public int compareTo(Carte autreCarte) {
-        return ((Integer) getValeur()).compareTo(autreCarte.getValeur());*/
 }

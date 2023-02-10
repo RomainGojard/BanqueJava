@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public interface TauxService {
 
-    // TODO: 09/02/2023 - faires les méthodes ajouterTaux, recupererTaux, afficherTaux
-
     Taux ajouterTaux( Taux taux );
 
     /**
