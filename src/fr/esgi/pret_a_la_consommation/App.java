@@ -82,12 +82,12 @@ public class App {
                         switch (reponseInt) {
                             case 1, 2, 3, 4 -> menuId = reponseInt;
                             case 0 -> System.exit(-1);
-                            default -> throw new ChoixInexistantException("Valeur inattendue");
+                            default -> throw new ChoixInexistantException(" " + reponseInt);
 
                         }
 
-                    } catch (NumberFormatException exception) {
-                        System.out.println(exception.getMessage());
+                    } catch (NumberFormatException | ChoixInexistantException exception) {
+                        System.out.println("Valeur incorrecte " + exception.getMessage());
                         reponseInt = -1;
                     }
 
@@ -130,8 +130,7 @@ public class App {
                         pret = pretService.recupererPret(reponseInt);
 
                         if (reponseInt != 0 && pret != null) {
-
-                            menuId = 3;
+                            menuId = 5;
                         } else {
                             menuId = 0;
                         }
@@ -153,10 +152,7 @@ public class App {
 
                         try {
                             date2 = LocalDate.parse(scanner.nextLine());
-
-                            pretService.recupererPrets();
-                            // TODO: 09/02/2023 appeler méthode afficher les prêts entre deux dates (date1, date2)
-
+                            System.out.println(pretService.afficherChaquePret(pretService.recupererPretsEntreDeuxDates(date1, date2)));
                             //retour au menu principal
                             menuId = 0;
                         } catch (DateTimeParseException exception) {
@@ -171,7 +167,6 @@ public class App {
                     break;
 
                 case 4:
-                    // TODO: 09/02/2023 appeler méthode afficher les clients
                     System.out.println(clientService.afficherClients());
 
                     //Récupération de la réponse
@@ -200,7 +195,7 @@ public class App {
 
                 case 5:
 
-                    System.out.println( pretService.afficherInformationsPret(pret));
+                    System.out.println(pretService.afficherInformationsPret(pret));
                     System.out.println(mensualiteService.afficherMensualitesDuPret(pret));
 
                     reponseString = scanner.nextLine();
@@ -214,10 +209,11 @@ public class App {
 
                     try {
                         montantPret = Long.parseLong(scanner.nextLine());
-                        menuId = 7;
-                        if (montantPret >= 20000) {
-                            throw new MontantExcessifException("Le montant ne doit pas dépasser 20000") ;
+
+                        if (montantPret > 20000) {
+                            throw new MontantExcessifException("Le montant ne doit pas dépasser 20000");
                         }
+                        menuId = 7;
                     } catch (NumberFormatException | MontantExcessifException exception) {
                         System.out.println(exception.getMessage());
                         reponseInt = -1;
@@ -264,7 +260,7 @@ public class App {
                         } else {
 
                             // TODO: 09/02/2023 appeler la méthode créer pret, créer mensualités d'un prêt depuis les impl
-                            pret = pretService.ajouterPret(montantPret, dateEffet ,"" , client, taux);
+                            pret = pretService.ajouterPret(montantPret, dateEffet, "", client, taux);
                             mensualiteService.creerMensualitesDuPret(pret);
                             menuId = 5; // page détail d'un prêt
 
@@ -294,6 +290,7 @@ public class App {
         tauxService.ajouterTaux(1, duree1an, motifVoiture);
         tauxService.ajouterTaux(10, duree2an, motifMoto);
         tauxService.ajouterTaux(5, duree1an, motifMoto);
+        tauxService.trierTaux();
     }
 
     /**

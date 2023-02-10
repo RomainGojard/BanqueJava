@@ -15,8 +15,8 @@ public class Taux implements Comparator<Taux> {
      * Constructeur d'un taux
      *
      * @param valeur Valeur du taux du prêt
-     * @param duree Durée sur lequel le taux est associé
-     * @param motif Motif asssocié au taux
+     * @param duree  Durée sur lequel le taux est associé
+     * @param motif  Motif asssocié au taux
      * @author romaingojard
      */
     public Taux(double valeur, Duree duree, Motif motif) {
@@ -45,15 +45,14 @@ public class Taux implements Comparator<Taux> {
 
     @Override
     public String toString() {
-        return id +
+        return "id : " + id + ", " +
                 " à " + valeur +
                 "% sur " + duree.toString() +
-                " mois " + motif.toString() + "\n" ;
+                " " + motif.toString();
     }
 
 
     /**
-     *
      * @param o1 the first object to be compared.
      * @param o2 the second object to be compared.
      * @return

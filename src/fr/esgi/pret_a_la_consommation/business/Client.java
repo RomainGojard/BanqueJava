@@ -51,8 +51,7 @@ public class Client implements Comparator<Client> {
 
     @Override
     public String toString() {
-        return id +
-                ". " + nom +
-                " " + prenom + '\n';
+        return "id : " + id + ", " + nom +
+                " " + prenom;
     }
 }

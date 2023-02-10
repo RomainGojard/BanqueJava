@@ -81,7 +81,7 @@ public class MensualiteServiceImpl implements MensualiteService {
     @Override
     public String afficherMensualitesDuPret(Pret pret) {
         String affiche = "\n";
-        affiche += "Date \t Capital Remboursé \t Part des intérêts\n";
+        affiche += "Date \t\t\t Capital Remboursé \t\t\t Part des intérêts\n";
 
         for (Mensualite mensualite : mensualites
         ) {

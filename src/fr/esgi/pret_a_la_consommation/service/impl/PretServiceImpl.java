@@ -34,7 +34,7 @@ public class PretServiceImpl implements PretService {
     @Override
     public Pret ajouterPret(Pret pret) throws MontantExcessifException {
 
-        if (pret.getMontantMensualite() >= 20000) {
+        if (pret.getMontantMensualite() > 20000) {
             throw new MontantExcessifException("Le prêt ne doit pas excéder 20000 euros.");
         }
         prets.add(pret);
@@ -115,7 +115,7 @@ public class PretServiceImpl implements PretService {
      */
     @Override
     public String afficherInformationsPret(Pret pret) {
-        return "id : " + pret.getId() + ", client : " + pret.getClient().getPrenom() + " " + pret.getClient().getNom() + ", montant emprunté : " + pret.getMontantDemande() + ", mensualité : " + pret.getMontantMensualite() + ", taux : " + pret.getTaux().getValeur();
+        return "id : " + pret.getId() + ", client : " + pret.getClient().getPrenom() + " " + pret.getClient().getNom() + ", montant emprunté : " + pret.getMontantDemande() + ", mensualité : " + pret.getMontantMensualite() + ", taux : " + pret.getTaux().getValeur() + "; date effet : " + pret.getDateEffet();
     }
 
     /**
@@ -125,6 +125,41 @@ public class PretServiceImpl implements PretService {
     public String afficherChaquePret() {
         String affiche = "";
         for (Pret pret : prets) {
+            affiche += afficherInformationsPret(pret) + "\n";
+        }
+        return affiche;
+    }
+
+    /**
+     * Récupère tous les prêts entre deux dates données
+     *
+     * @param dateInferieur date inférieur
+     * @param dateSuperieur date supérieur
+     * @return liste de prêts
+     * @author romaingojard
+     */
+    @Override
+    public ArrayList<Pret> recupererPretsEntreDeuxDates(LocalDate dateInferieur, LocalDate dateSuperieur) {
+        ArrayList<Pret> pretsARenvoyer = new ArrayList<>();
+        for (Pret pret : prets
+        ) {
+            if (pret.getDateEffet().isAfter(dateInferieur) && pret.getDateEffet().isBefore(dateSuperieur)) {
+                pretsARenvoyer.add(pret);
+            }
+        }
+        return pretsARenvoyer;
+    }
+
+    /**
+     * Affiche une sélection de prets
+     *
+     * @param pretsAAfficher ArrayList
+     * @return liste de prets
+     */
+    @Override
+    public String afficherChaquePret(ArrayList<Pret> pretsAAfficher) {
+        String affiche = "";
+        for (Pret pret : pretsAAfficher) {
             affiche += afficherInformationsPret(pret) + "\n";
         }
         return affiche;

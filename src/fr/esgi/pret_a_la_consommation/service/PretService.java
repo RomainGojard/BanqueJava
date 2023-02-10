@@ -24,6 +24,10 @@ public interface PretService {
 
     String afficherChaquePret();
 
+    ArrayList<Pret> recupererPretsEntreDeuxDates(LocalDate date1, LocalDate date2);
+
+    String afficherChaquePret(ArrayList<Pret> pretsAAfficher);
+
 
 
 }

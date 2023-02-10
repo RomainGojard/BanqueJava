@@ -13,13 +13,12 @@ public class ComparateurDeTauxSurValeurDecroissante implements Comparator<Taux> 
      * @author romaingojard
      */
     /**
-     *
      * @param taux1 the first object to be compared.
      * @param taux2 the second object to be compared.
      * @return
      */
     @Override
     public int compare(Taux taux1, Taux taux2) {
-        return(Double.compare((taux1.getValeur()), taux2.getValeur()));
+        return (Double.compare((taux2.getValeur()), taux1.getValeur()));
     }
 }

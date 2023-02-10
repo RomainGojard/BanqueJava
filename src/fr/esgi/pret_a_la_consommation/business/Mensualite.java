@@ -61,7 +61,7 @@ public class Mensualite implements Comparator<Mensualite> {
      */
     @Override
     public String toString() {
-        return datePrelevement + "\t" + (Math.round(partCapitalRembourses * 100.0) /100.0) + "\t" + Math.round(partInteretsRembourses * 100.0) / 100.0;
+        return datePrelevement + "\t\t\t" + (Math.round(partCapitalRembourses * 100.0) /100.0) + "\t\t\t" + Math.round(partInteretsRembourses * 100.0) / 100.0;
     }
 
     /**

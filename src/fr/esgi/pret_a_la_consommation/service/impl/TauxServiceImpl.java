@@ -4,8 +4,10 @@ import fr.esgi.pret_a_la_consommation.business.Duree;
 import fr.esgi.pret_a_la_consommation.business.Motif;
 import fr.esgi.pret_a_la_consommation.business.Taux;
 import fr.esgi.pret_a_la_consommation.service.TauxService;
+import fr.esgi.pret_a_la_consommation.util.ComparateurDeTauxSurValeurDecroissante;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class TauxServiceImpl implements TauxService {
 
@@ -51,5 +53,11 @@ public class TauxServiceImpl implements TauxService {
 
         }
         return affiche;
+    }
+
+    @Override
+    public void trierTaux() {
+        Comparator<Taux> comparator = new ComparateurDeTauxSurValeurDecroissante();
+        listTaux.sort(comparator);
     }
 }
