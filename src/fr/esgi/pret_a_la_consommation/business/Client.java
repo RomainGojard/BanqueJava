@@ -41,4 +41,12 @@ public class Client implements Comparator<Client> {
     public int compare(Client client1, Client client2) {
         return client1.getNom().compareTo(client2.getNom());
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                '}';
+    }
 }

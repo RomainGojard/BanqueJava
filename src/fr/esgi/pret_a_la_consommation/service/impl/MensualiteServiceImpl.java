@@ -23,6 +23,7 @@ public class MensualiteServiceImpl implements MensualiteService {
      * Méthode qui crée toutes les mensualités du prêt avec leur date et part de capital / intérêt
      * @param pret Le prêt auquel est associée la mensualité
      * @return La liste des mensualités pour ce prêt
+     * @author romaingojard
      */
     @Override
     public ArrayList<Mensualite> creerMensualitesDuPret(Pret pret) {
