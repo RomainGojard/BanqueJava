@@ -35,11 +35,8 @@ public class App {
 
     private static Scanner scanner = new Scanner(System.in);
 
-
-    // TODO: 09/02/2023 - instancier les différents services nécessaire
-
     /**
-     * Boucle de l'application pour accéder au différent menu selon les actions de l'utilisateur
+     * Boucle de l'application pour accéder aux différents menus selon les actions de l'utilisateur
      *
      * @param args
      * @author romaingojard
@@ -259,7 +256,7 @@ public class App {
                         } else {
 
                             // TODO: 09/02/2023 appeler la méthode créer pret, créer mensualités d'un prêt depuis les impl
-                            //pret= pretServiceImplCreerPret
+                            //pret= PretServiceImpl.ajouterPret();
                             //creer mensualites
                             menuId = 5; // page détail d'un prêt
 
