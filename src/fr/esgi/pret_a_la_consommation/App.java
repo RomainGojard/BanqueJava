@@ -3,6 +3,7 @@ package fr.esgi.pret_a_la_consommation;
 import fr.esgi.pret_a_la_consommation.business.Client;
 import fr.esgi.pret_a_la_consommation.business.Pret;
 import fr.esgi.pret_a_la_consommation.business.Taux;
+import fr.esgi.pret_a_la_consommation.exceptions.ChoixInexistantException;
 import fr.esgi.pret_a_la_consommation.service.impl.MensualiteServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.PretServiceImpl;
 
@@ -82,7 +83,7 @@ public class App {
                             case 0 -> System.exit(-1);
                             default ->
                                 // TODO: 09/02/2023 lever une exception maison à faire
-                                    throw new RuntimeException("Valeur pas attendue");
+                                    throw new ChoixInexistantException("Valeur pas attendue");
 
                         }
 
