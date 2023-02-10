@@ -10,6 +10,5 @@ public interface ClientService {
 
     public Client recupererClients();
 
-
-    Client recupererClient(long id);
+    public Client recupererClient(long id);
 }

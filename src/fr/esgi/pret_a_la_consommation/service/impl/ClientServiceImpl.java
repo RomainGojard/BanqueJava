@@ -8,6 +8,12 @@ import java.util.ArrayList;
 public class ClientServiceImpl implements ClientService {
     private static ArrayList<Client> clients = new ArrayList<>();
 
+    /**
+     * Création d'un client
+     * @param nom du client à ajouter (String)
+     * @param prenom du client à ajouter (String)
+     * @return nouveau client
+     */
     @Override
     public Client creerClient(String nom, String prenom){
         Client newClient = new Client(nom, prenom);
@@ -15,9 +21,15 @@ public class ClientServiceImpl implements ClientService {
         return newClient ;
     }
 
-    // TODO: 10/02/2023 Alexis
+    /**
+     * Récupération de la liste des clients
+     * @return tous les clients de la liste
+     */
     @Override
     public Client recupererClients() {
+        for (Client client : clients) {
+            return client;
+        }
         return null;
     }
 
