@@ -273,9 +273,6 @@ public class App {
 
     }
 
-    // TODO: 09/02/2023 - boucle infinie (while true) avec les choix possibles par l'utilisateurs 
-
-
     public static void initialiserLesPrets() {
         // TODO: 09/02/2023 récupérer les prets, ajouter des prêts bateaux... 
     }

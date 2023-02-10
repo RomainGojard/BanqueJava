@@ -29,9 +29,7 @@ public class PretServiceImpl implements PretService {
         LocalDate dateEffet = null;
 
         Pret pret = new Pret(montantDemande, montantMensualite, dateSouscription, dateEffet, observations, client, taux );
-        prets.add(pret);
-
-        return pret;
+        return ajouterPret(pret);
     }
 
 
