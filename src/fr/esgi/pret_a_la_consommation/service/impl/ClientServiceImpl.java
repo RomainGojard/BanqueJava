@@ -1,14 +1,11 @@
 package fr.esgi.pret_a_la_consommation.service.impl;
 
 import fr.esgi.pret_a_la_consommation.business.Client;
-import fr.esgi.pret_a_la_consommation.business.Mensualite;
-import fr.esgi.pret_a_la_consommation.business.Pret;
 import fr.esgi.pret_a_la_consommation.service.ClientService;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class ClientServiceImpl {
+public class ClientServiceImpl implements ClientService {
     private static ArrayList<Client> clients = new ArrayList<>();
 
     @Override
@@ -16,6 +13,12 @@ public class ClientServiceImpl {
         Client newClient = new Client(nom, prenom);
         clients.add(newClient);
         return newClient ;
+    }
+
+    // TODO: 10/02/2023 Alexis
+    @Override
+    public Client recupererClients() {
+        return null;
     }
 
     /**

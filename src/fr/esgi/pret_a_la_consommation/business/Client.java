@@ -14,6 +14,7 @@ public class Client implements Comparator<Client> {
 
     /**
      * Constructeur d'un client
+     *
      * @param nom
      * @param prenom
      * @author romaingojard
@@ -27,13 +28,18 @@ public class Client implements Comparator<Client> {
     public String getNom() {
         return nom;
     }
+
     public String getPrenom() {
         return prenom;
     }
 
-    public long getId() { return id; }
+    public long getId() {
+        return id;
+    }
+
     /**
      * Comparateur sur le nom des clients
+     *
      * @param client1 the first object to be compared.
      * @param client2 the second object to be compared.
      * @return
