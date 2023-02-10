@@ -105,8 +105,7 @@ public class Pret {
 
 
     /**
-     *
-     * @return Hash de
+     * @return Hash de getId(), getMontantDemande(), getMontantMensualite(), getDateSouscription(), getDateEffet(), getObservations(), getClient(), getTaux()
      */
     @Override
     public int hashCode() {

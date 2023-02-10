@@ -4,4 +4,5 @@ Réalisé par Valentyn COUDIERE, Alexis BARREYRE et Romain GOJARD, en classe de 
 
 Vous pouvez voir le MCD ainsi que le MLD du projet dans le package infos, ainsi que l'énnoncé du sujet.
 
-Une javaDoc est aussi disponible dans le package Doc. 
+
+
