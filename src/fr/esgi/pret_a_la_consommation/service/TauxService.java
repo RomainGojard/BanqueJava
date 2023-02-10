@@ -25,5 +25,5 @@ public interface TauxService {
 
     Taux recupererTaux(long id);
 
-    String afficherTaux(long id);
+    String afficherLesTaux();
 }

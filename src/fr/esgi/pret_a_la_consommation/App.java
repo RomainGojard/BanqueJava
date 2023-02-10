@@ -1,12 +1,11 @@
 package fr.esgi.pret_a_la_consommation;
 
-import fr.esgi.pret_a_la_consommation.business.Client;
-import fr.esgi.pret_a_la_consommation.business.Pret;
-import fr.esgi.pret_a_la_consommation.business.Taux;
+import fr.esgi.pret_a_la_consommation.business.*;
 import fr.esgi.pret_a_la_consommation.exceptions.ChoixInexistantException;
 import fr.esgi.pret_a_la_consommation.service.impl.ClientServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.MensualiteServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.PretServiceImpl;
+import fr.esgi.pret_a_la_consommation.service.impl.TauxServiceImpl;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -15,16 +14,16 @@ import java.util.Scanner;
 
 public class App {
 
-    private static ClientServiceImpl clientService = new ClientServiceImpl();
+    private static final ClientServiceImpl clientService = new ClientServiceImpl();
     private static final MensualiteServiceImpl mensualiteService = new MensualiteServiceImpl();
     private static final PretServiceImpl pretService = new PretServiceImpl();
-    // private static final TauxServiceImpl tauxService = new TauxServiceImpl();
+    private static final TauxServiceImpl tauxService = new TauxServiceImpl();
 
     private static Client client = null;
     private static Taux taux = null;
     private static LocalDate dateEffet = null;
     private static Pret pret = null;
-    private static double montantPret = 0;
+    private static long montantPret = 0;
 
     private static int reponseInt = 0;
     private static String reponseString;
@@ -79,9 +78,7 @@ public class App {
                         switch (reponseInt) {
                             case 1, 2, 3, 4 -> menuId = reponseInt;
                             case 0 -> System.exit(-1);
-                            default ->
-                                // TODO: 09/02/2023 lever une exception maison à faire
-                                    throw new ChoixInexistantException("Valeur pas attendue");
+                            default -> throw new ChoixInexistantException("Valeur inattendue");
 
                         }
 
@@ -93,7 +90,8 @@ public class App {
                     break;
 
                 case 1:
-                    // TODO: 09/02/2023 appeler méthode afficher prêts trier par montant
+                    pretService.trierPrets("montant");
+                    System.out.println(pretService.afficherChaquePret());
 
                     //Récupération de la réponse
                     System.out.print("Veuillez saisir l'ID du prêt pour lequel vous voulez voir les informations ou entrez 0 pour faire retour : ");
@@ -101,12 +99,11 @@ public class App {
                     try {
                         reponseInt = Integer.parseInt(scanner.nextLine());
 
-                        // TODO: 09/02/2023 - appeler la méthode obtenirPret(id),si c'est null renvoyer aucun élément valide
-                        // pret = obtenirPret(id);
+                        pret = pretService.recupererPret(reponseInt);
 
-                        if (reponseInt != 0 /* && pret != null */) {
+                        if (reponseInt != 0 && pret != null) {
 
-                            menuId = 3;
+                            menuId = 5;
                         } else {
                             menuId = 0;
                         }
@@ -117,7 +114,8 @@ public class App {
                     break;
 
                 case 2:
-                    // TODO: 09/02/2023 appeler méthode afficher prêts trier par taux
+                    pretService.trierPrets("taux");
+                    System.out.println(pretService.afficherChaquePret());
 
                     //Récupération de la réponse
                     System.out.print("Veuillez saisir l'ID du prêt pour lequel vous voulez voir les informations ou entrez 0 pour faire retour : ");
@@ -125,10 +123,9 @@ public class App {
                     try {
                         reponseInt = Integer.parseInt(scanner.nextLine());
 
-                        // TODO: 09/02/2023 - appeler la méthode obtenirPret(id),si c'est null renvoyer aucun élément valide
-                        // pret = obtenirPret(id);
+                        pret = pretService.recupererPret(reponseInt);
 
-                        if (reponseInt != 0 /* && pret != null */) {
+                        if (reponseInt != 0 && pret != null) {
 
                             menuId = 3;
                         } else {
@@ -143,15 +140,19 @@ public class App {
 
                 case 3:
                     //Récupération de la réponse
-                    System.out.print("Veuillez entrer une première date (jj/MM/aaaa) : ");
+                    System.out.print("Veuillez entrer une première date (aaaa-MM-jj) : ");
 
                     try {
                         date1 = LocalDate.parse(scanner.nextLine());
 
-                        System.out.print("Veuillez entrer une deuxième date (jj/MM/aaaa) : ");
+                        System.out.print("Veuillez entrer une deuxième date (aaaa-MM-jj) : ");
 
                         try {
                             date2 = LocalDate.parse(scanner.nextLine());
+
+                            pretService.recupererPrets();
+                            // TODO: 09/02/2023 appeler méthode afficher les prêts entre deux dates (date1, date2)
+
                             //retour au menu principal
                             menuId = 0;
                         } catch (DateTimeParseException exception) {
@@ -163,11 +164,11 @@ public class App {
                     }
 
 
-                    // TODO: 09/02/2023 appeler méthode afficher les prêts entre deux dates (date1, date2)
                     break;
 
                 case 4:
                     // TODO: 09/02/2023 appeler méthode afficher les clients
+                    System.out.println(clientService.afficherClients());
 
                     //Récupération de la réponse
                     System.out.print("Veuillez saisir l'ID du client pour lequel vous voulez créer un prêt ou entrer 0 si vous voulez faire retour : ");
@@ -195,8 +196,9 @@ public class App {
 
                 case 5:
 
-                    // TODO: 09/02/2023 appeler la méthode afficherInformationsPret pour un prêt donné depuis pretServiceImpl qui retournera un string de toutes les infos (voir pdf prof)
-                    // System.out.println(pretServiceImpl.afficherInformationsPret(pret));
+                    System.out.println( pretService.afficherInformationsPret(pret));
+                    System.out.println(mensualiteService.afficherMensualitesDuPret(pret));
+
                     reponseString = scanner.nextLine();
                     menuId = 0;
                     break;
@@ -207,9 +209,12 @@ public class App {
                     System.out.print("Veuillez entrer le montant de votre prêt : ");
 
                     try {
-                        montantPret = Double.parseDouble(scanner.nextLine());
+                        montantPret = Long.parseLong(scanner.nextLine());
                         menuId = 7;
-                    } catch (NumberFormatException exception) {
+                        if (montantPret >= 20000) {
+                            throw new MontantExcessifException("Le montant ne doit pas dépasser 20000") ;
+                        }
+                    } catch (NumberFormatException | MontantExcessifException exception) {
                         System.out.println(exception.getMessage());
                         reponseInt = -1;
                     }
@@ -247,7 +252,7 @@ public class App {
 
                 case 8:
 
-                    System.out.println("Veuillez entrer la date d'effet de votre prêt (jj/MM/aaaa) : ");
+                    System.out.print("Veuillez entrer la date d'effet de votre prêt (aaaa-MM-jj) : ");
 
                     try {
                         dateEffet = LocalDate.parse(scanner.nextLine());
@@ -256,8 +261,8 @@ public class App {
                         } else {
 
                             // TODO: 09/02/2023 appeler la méthode créer pret, créer mensualités d'un prêt depuis les impl
-                            //pret= PretServiceImpl.ajouterPret();
-                            //creer mensualites
+                            pret = pretService.ajouterPret(montantPret, dateEffet ,"" , client, taux);
+                            mensualiteService.creerMensualitesDuPret(pret);
                             menuId = 5; // page détail d'un prêt
 
                         }
@@ -272,12 +277,34 @@ public class App {
 
     }
 
+    /**
+     * Initialisation de 4 taux arbitraires
+     */
+    public static void initialiserLesTaux() {
+        Motif motifVoiture = new Motif("Voiture", "Uniquement pour des voitures d'une valeur de moins de 20 000€ à l'Argus");
+        Motif motifMoto = new Motif("Moto", "Uniquement pour des motos d'une valeur de moins de 10 000€ à l'Argus");
+
+        Duree duree1an = new Duree(12);
+        Duree duree2an = new Duree(24);
+
+        tauxService.ajouterTaux(5, duree2an, motifVoiture);
+        tauxService.ajouterTaux(1, duree1an, motifVoiture);
+        tauxService.ajouterTaux(10, duree2an, motifMoto);
+        tauxService.ajouterTaux(5, duree1an, motifMoto);
+    }
+
+    /**
+     * Initialisation de 4 prêts arbitraires
+     */
     public static void initialiserLesPrets() {
         // TODO: 09/02/2023 récupérer les prets, ajouter des prêts bateaux... 
     }
 
     public static void initialiserLesMensualites() {
-        // TODO: 09/02/2023 récupérer les mensualités, ajouter des mensualités bateau
+        mensualiteService.creerMensualitesDuPret(pretService.recupererPret(1));
+        mensualiteService.creerMensualitesDuPret(pretService.recupererPret(2));
+        mensualiteService.creerMensualitesDuPret(pretService.recupererPret(3));
+        mensualiteService.creerMensualitesDuPret(pretService.recupererPret(4));
     }
 
     public static void initialiserLesClients() {
@@ -287,7 +314,8 @@ public class App {
     public static void initialiserApp() {
         System.out.println("Bienvenue sur l'application de simulation de prêts à la consommation ! \n");
 
-        // Bien respecter l'order ;)
+        // Bien respecter l'ordre ;)
+        initialiserLesTaux();
         initialiserLesClients();
         initialiserLesPrets();
         initialiserLesMensualites();

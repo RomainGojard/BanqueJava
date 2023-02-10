@@ -21,6 +21,7 @@ public class MensualiteServiceImpl implements MensualiteService {
 
     /**
      * Méthode qui crée toutes les mensualités du prêt avec leur date et part de capital / intérêt
+     *
      * @param pret Le prêt auquel est associée la mensualité
      * @return La liste des mensualités pour ce prêt
      * @author romaingojard
@@ -37,7 +38,7 @@ public class MensualiteServiceImpl implements MensualiteService {
         long capital = pret.getMontantDemande();
 
         // taux annuel et mensuel du prêt
-        double interetAnnuel = pret.getTaux().getValeur();
+        double interetAnnuel = pret.getTaux().getValeur() / 100;
         double interetMensuel = interetAnnuel / 12;
 
         // montant de la mensualité définit lors de la création du prêt
@@ -45,7 +46,7 @@ public class MensualiteServiceImpl implements MensualiteService {
 
         // variables de boucle qui serviront pour créer les mensualités et les ajouter dans les listes
         double partCapital = 0;
-        double partInteret ;
+        double partInteret;
         LocalDate datePrelevement = pret.getDateEffet();
         Mensualite mensualite;
 
@@ -56,24 +57,38 @@ public class MensualiteServiceImpl implements MensualiteService {
             partInteret = (capital - partCapital) * interetMensuel;
 
             // calcul de la part cpaital pour la mensualité courante
-            partCapital += montantMensualite - partInteret ;
+            partCapital += (montantMensualite - partInteret);
 
             // incrémentation de la date sur le mois (ou l'année si le dernier mois de l'année)
-            if (datePrelevement.getMonth().getValue() == 12){
-                datePrelevement = LocalDate.of(datePrelevement.getYear() + 1 ,1, datePrelevement.getDayOfMonth());
-            }else {
-                datePrelevement = LocalDate.of(datePrelevement.getYear(), datePrelevement.getMonth().getValue() + 1, datePrelevement.getDayOfMonth());
-            }
+            datePrelevement = LocalDate.of(datePrelevement.plusMonths(1).getYear(), datePrelevement.plusMonths(1).getMonthValue(), 1);
 
             // création de la mensualité
             mensualite = new Mensualite(datePrelevement, partInteret, partCapital, pret);
 
-            // ajout de la mensualités dans les listes
-            mensualites.add(mensualite);
             mensualitesDuPret.add(mensualite);
+            mensualites.add(mensualite);
 
         }
 
         return mensualitesDuPret;
+    }
+
+    /**
+     * Affiche les mensualités du pret en input
+     * @param pret
+     * @return les mensualités en String
+     */
+    @Override
+    public String afficherMensualitesDuPret(Pret pret) {
+        String affiche = "\n";
+        affiche += "Date \t Capital Remboursé \t Part des intérêts\n";
+
+        for (Mensualite mensualite : mensualites
+        ) {
+            if (pret.equals(mensualite.getPret())) {
+                affiche += mensualite.toString() + "\n";
+            }
+        }
+        return affiche;
     }
 }

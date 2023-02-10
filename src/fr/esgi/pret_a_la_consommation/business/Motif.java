@@ -2,6 +2,12 @@ package fr.esgi.pret_a_la_consommation.business;
 
 public class Motif {
 
+    public Motif(String nom, String description) {
+        this.id = ++compteur ;
+        this.nom = nom;
+        this.description = description;
+    }
+
     //attributs
     private long id;
     private String nom;

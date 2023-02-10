@@ -43,11 +43,12 @@ public class TauxServiceImpl implements TauxService {
     }
 
     @Override
-    public String afficherTaux(long id) {
+    public String afficherLesTaux() {
         String affiche= "";
         for (Taux taux: listTaux
              ) {
-            affiche += taux.toString();
+            affiche += taux.toString() + "\n";
+
         }
         return affiche;
     }

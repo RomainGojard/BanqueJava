@@ -20,19 +20,6 @@ public class ClientServiceImpl implements ClientService {
         clients.add(newClient);
         return newClient ;
     }
-
-    /**
-     * Récupération de la liste des clients
-     * @return tous les clients de la liste
-     */
-    @Override
-    public Client recupererClients() {
-        for (Client client : clients) {
-            return client;
-        }
-        return null;
-    }
-
     /**
      * Récupération du client en fonction de son id
      *

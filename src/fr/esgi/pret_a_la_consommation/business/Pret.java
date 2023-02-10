@@ -2,6 +2,7 @@ package fr.esgi.pret_a_la_consommation.business;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Pret {
 
@@ -90,4 +91,16 @@ public class Pret {
         this.observations = observations;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pret pret = (Pret) o;
+        return getId() == pret.getId() && getMontantDemande() == pret.getMontantDemande() && Double.compare(pret.getMontantMensualite(), getMontantMensualite()) == 0 && Objects.equals(getDateSouscription(), pret.getDateSouscription()) && Objects.equals(getDateEffet(), pret.getDateEffet()) && Objects.equals(getObservations(), pret.getObservations()) && Objects.equals(getClient(), pret.getClient()) && Objects.equals(getTaux(), pret.getTaux());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getMontantDemande(), getMontantMensualite(), getDateSouscription(), getDateEffet(), getObservations(), getClient(), getTaux());
+    }
 }

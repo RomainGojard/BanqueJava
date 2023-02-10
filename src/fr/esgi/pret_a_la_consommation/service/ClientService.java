@@ -11,4 +11,7 @@ public interface ClientService {
     public Client recupererClients();
 
     public Client recupererClient(long id);
+
+    public String afficherClients();
+
 }

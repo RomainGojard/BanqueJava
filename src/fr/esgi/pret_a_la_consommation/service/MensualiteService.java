@@ -10,4 +10,7 @@ public interface MensualiteService {
     Mensualite ajouterMensualite (Mensualite mensualite);
 
     ArrayList<Mensualite> creerMensualitesDuPret(Pret pret);
+
+    String afficherMensualitesDuPret(Pret pret);
+
 }
