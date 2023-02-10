@@ -60,6 +60,11 @@ public class Taux implements Comparator<Taux> {
      */
     @Override
     public int compare(Taux o1, Taux o2) {
+
         return 0;
     }
+
+    /*@Override
+    public int compareTo(Carte autreCarte) {
+        return ((Integer) getValeur()).compareTo(autreCarte.getValeur());*/
 }

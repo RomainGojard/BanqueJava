@@ -2,6 +2,9 @@ package fr.esgi.pret_a_la_consommation;
 
 import fr.esgi.pret_a_la_consommation.business.*;
 import fr.esgi.pret_a_la_consommation.exceptions.ChoixInexistantException;
+import fr.esgi.pret_a_la_consommation.exceptions.MontantExcessifException;
+import fr.esgi.pret_a_la_consommation.service.MensualiteService;
+import fr.esgi.pret_a_la_consommation.service.PretService;
 import fr.esgi.pret_a_la_consommation.service.impl.ClientServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.MensualiteServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.PretServiceImpl;
@@ -224,8 +227,8 @@ public class App {
 
 
                 case 7:
-                    // TODO: 09/02/2023  appeler la méthodes depuis tauxServiceImpl pour afficher tous les taux disponibles
-                    System.out.println(/* tauxServiceImpl.afficherTousLesTaux */);
+                    // TODO: 09/02/2023  appeler la méthode depuis tauxServiceImpl pour afficher tous les taux disponibles
+                    System.out.println(tauxService.afficherLesTaux());
 
                     //Récupération de la réponse
                     System.out.print("Veuillez saisir l'ID du taux pour lequel vous voulez créer un prêt ou entrer 0 si vous voulez faire retour : ");
@@ -235,8 +238,7 @@ public class App {
                         if (reponseInt == 0) {
                             menuId = 0;
                         } else {
-                            // TODO: 09/02/2023 appeler la méthode depuis tauxServiceImpl pour récupérer le taux selon son ID
-                            //taux = tauxServiceImpl.obtenirTaux(reponseInt);
+                            taux = tauxService.recupererTaux(reponseInt);
                             if (taux != null) {
                                 menuId = 8;
                             } else {
@@ -318,7 +320,10 @@ public class App {
      * Initialisation de 4 clients arbitraires
      */
     public static void initialiserLesClients() {
-        // TODO: 09/02/2023 récupérer les clients, ajouter des clients bateaux
+        clientService.creerClient("Dupont", "Jacques");
+        clientService.creerClient("Baldur", "Kevin");
+        clientService.creerClient("Gojard", "Romain");
+        clientService.creerClient("Macron", "Emmanuel");
     }
 
     /**

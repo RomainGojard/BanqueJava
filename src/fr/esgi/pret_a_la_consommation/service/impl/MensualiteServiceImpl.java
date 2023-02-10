@@ -50,8 +50,8 @@ public class MensualiteServiceImpl implements MensualiteService {
         LocalDate datePrelevement = pret.getDateEffet();
         Mensualite mensualite;
 
-        // on créé une mensualité par nombre de mois
-        for (int i = 0; i < nbMensualites ; i++) {
+        // on crée une mensualité par nombre de mois
+        for (int i = 0; i < nbMensualites; i++) {
 
             // calcul de la part d'interêt pour la mensualité courante
             partInteret = (capital - partCapital) * interetMensuel;
