@@ -42,17 +42,15 @@ public class Taux implements Comparator<Taux> {
         return motif;
     }
 
-    /**
-     *
-     * @return to string
-     * @author romaingojard
-     */
+
     @Override
     public String toString() {
-        return "Taux{" +
-                "valeur=" + valeur +
-                '}';
+        return id +
+                "à" + valeur +
+                "% sur" + duree.toString() +
+                " mois" + motif.toString() ;
     }
+
 
     /**
      *

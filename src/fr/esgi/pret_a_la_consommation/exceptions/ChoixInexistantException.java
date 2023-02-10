@@ -8,7 +8,7 @@ public class ChoixInexistantException extends RuntimeException {
      * @author romaingojard
      */
     public ChoixInexistantException(String message){
-        super(message);
+        super("La réponse ne correspond à aucun choix disponible" + message);
     }
 
 }

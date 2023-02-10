@@ -4,6 +4,7 @@ import fr.esgi.pret_a_la_consommation.business.Client;
 import fr.esgi.pret_a_la_consommation.business.Pret;
 import fr.esgi.pret_a_la_consommation.business.Taux;
 import fr.esgi.pret_a_la_consommation.exceptions.ChoixInexistantException;
+import fr.esgi.pret_a_la_consommation.service.impl.ClientServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.MensualiteServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.PretServiceImpl;
 
@@ -14,9 +15,9 @@ import java.util.Scanner;
 
 public class App {
 
+    private static ClientServiceImpl clientService = new ClientServiceImpl();
     private static final MensualiteServiceImpl mensualiteService = new MensualiteServiceImpl();
     private static final PretServiceImpl pretService = new PretServiceImpl();
-    // private static final ClientServiceImpl clientService = new ClientServiceImpl();
     // private static final TauxServiceImpl tauxService = new TauxServiceImpl();
 
     private static Client client = null;
