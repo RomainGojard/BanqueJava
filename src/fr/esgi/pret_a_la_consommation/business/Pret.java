@@ -20,13 +20,14 @@ public class Pret {
 
     /**
      * Constructeur Pret
-     * @param montantDemande Montant prêté
+     *
+     * @param montantDemande    Montant prêté
      * @param montantMensualite Montant de chaque mensualité
-     * @param dateSouscription Date de la souscription du prêt
-     * @param dateEffet Date d'effet du prêt => Date de première mensualité ou du montant viré ?
-     * @param observations Observations
-     * @param client Client auquel le prêt est associé
-     * @param taux Taux auquel le prêt est associé
+     * @param dateSouscription  Date de la souscription du prêt
+     * @param dateEffet         Date d'effet du prêt => Date de première mensualité ou du montant viré ?
+     * @param observations      Observations
+     * @param client            Client auquel le prêt est associé
+     * @param taux              Taux auquel le prêt est associé
      * @author romaingojard
      */
     public Pret(long montantDemande, double montantMensualite, LocalDateTime dateSouscription, LocalDate dateEffet, String observations, Client client, Taux taux) {
@@ -44,19 +45,27 @@ public class Pret {
     public long getId() {
         return id;
     }
+
     public long getMontantDemande() {
         return montantDemande;
     }
-    public double getMontantMensualite() { return montantMensualite; }
+
+    public double getMontantMensualite() {
+        return montantMensualite;
+    }
+
     public LocalDateTime getDateSouscription() {
         return dateSouscription;
     }
+
     public LocalDate getDateEffet() {
         return dateEffet;
     }
+
     public String getObservations() {
         return observations;
     }
+
     public static long getCompteur() {
         return compteur;
     }
@@ -73,29 +82,27 @@ public class Pret {
     public void setId(long id) {
         this.id = id;
     }
+
     public void setMontantDemande(long montantDemande) {
         this.montantDemande = montantDemande;
     }
+
     public void setMontantMensualite(double montantMensualite) {
         this.montantMensualite = montantMensualite;
     }
+
     public void setDateSouscription(LocalDateTime dateSouscription) {
         this.dateSouscription = dateSouscription;
     }
+
     public void setDateEffet(LocalDate dateEffet) {
         this.dateEffet = dateEffet;
     }
+
     public void setObservations(String observations) {
         this.observations = observations;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pret pret = (Pret) o;
-        return getId() == pret.getId() && getMontantDemande() == pret.getMontantDemande() && Double.compare(pret.getMontantMensualite(), getMontantMensualite()) == 0 && Objects.equals(getDateSouscription(), pret.getDateSouscription()) && Objects.equals(getDateEffet(), pret.getDateEffet()) && Objects.equals(getObservations(), pret.getObservations()) && Objects.equals(getClient(), pret.getClient()) && Objects.equals(getTaux(), pret.getTaux());
-    }
 
     /**
      *
