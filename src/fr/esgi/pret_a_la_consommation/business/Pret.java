@@ -89,4 +89,5 @@ public class Pret {
     public void setObservations(String observations) {
         this.observations = observations;
     }
+
 }
