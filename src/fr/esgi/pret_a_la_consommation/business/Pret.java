@@ -47,9 +47,7 @@ public class Pret {
     public long getMontantDemande() {
         return montantDemande;
     }
-    public double getMontantMensualite() {
-        return montantMensualite;
-    }
+    public double getMontantMensualite() { return montantMensualite; }
     public LocalDateTime getDateSouscription() {
         return dateSouscription;
     }

@@ -46,4 +46,9 @@ public class Motif {
     public Motif() {
         id = ++compteur;
     }
+
+    @Override
+    public String toString() {
+        return nom;
+    }
 }

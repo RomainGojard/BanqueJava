@@ -8,6 +8,7 @@ import fr.esgi.pret_a_la_consommation.service.impl.PretServiceImpl;
 import fr.esgi.pret_a_la_consommation.service.impl.TauxServiceImpl;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -118,7 +119,7 @@ public class App {
                     System.out.println(pretService.afficherChaquePret());
 
                     //Récupération de la réponse
-                    System.out.print("Veuillez saisir l'ID du prêt pour lequel vous voulez voir les informations ou entrez 0 pour faire retour : ");
+                    System.out.print("Veuillez saisir l'ID du prêt pour lequel vous voulez voir les informations ou entrez 0 pour retourner en arrière : ");
 
                     try {
                         reponseInt = Integer.parseInt(scanner.nextLine());
@@ -180,7 +181,7 @@ public class App {
                             menuId = 0;
                         } else {
                             // TODO: 09/02/2023 appeler la méthode obtenirClient(id)
-                            //client = clientServiceImpl.obtenirClient(reponseInt);
+                            client = clientService.recupererClient(reponseInt);
                             if (client != null) {
                                 menuId = 6;
                             } else {
@@ -297,9 +298,15 @@ public class App {
      * Initialisation de 4 prêts arbitraires
      */
     public static void initialiserLesPrets() {
-        // TODO: 09/02/2023 récupérer les prets, ajouter des prêts bateaux... 
+        pretService.ajouterPret(1000, LocalDate.of(2023, 3, 3), "Peugot 307", clientService.recupererClient(1), tauxService.recupererTaux(2));
+        pretService.ajouterPret(18000, LocalDate.of(2018, 12, 25), "Vacances de Noel", clientService.recupererClient(2), tauxService.recupererTaux(2));
+        pretService.ajouterPret(12000, LocalDate.of(2017, 3, 28), "Piscine", clientService.recupererClient(3), tauxService.recupererTaux(3));
+        pretService.ajouterPret(5000, LocalDate.of(2020, 8, 4), "Vélo", clientService.recupererClient(4), tauxService.recupererTaux(4));
     }
 
+    /**
+     * Initialisation de 4 mensualités arbitraires
+     */
     public static void initialiserLesMensualites() {
         mensualiteService.creerMensualitesDuPret(pretService.recupererPret(1));
         mensualiteService.creerMensualitesDuPret(pretService.recupererPret(2));
@@ -307,10 +314,16 @@ public class App {
         mensualiteService.creerMensualitesDuPret(pretService.recupererPret(4));
     }
 
+    /**
+     * Initialisation de 4 clients arbitraires
+     */
     public static void initialiserLesClients() {
         // TODO: 09/02/2023 récupérer les clients, ajouter des clients bateaux
     }
 
+    /**
+     * Démarrage de l'application
+     */
     public static void initialiserApp() {
         System.out.println("Bienvenue sur l'application de simulation de prêts à la consommation ! \n");
 

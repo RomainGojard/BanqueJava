@@ -46,9 +46,9 @@ public class Taux implements Comparator<Taux> {
     @Override
     public String toString() {
         return id +
-                "à" + valeur +
-                "% sur" + duree.toString() +
-                " mois" + motif.toString() ;
+                " à " + valeur +
+                "% sur " + duree.toString() +
+                " mois " + motif.toString() + "\n" ;
     }
 
 

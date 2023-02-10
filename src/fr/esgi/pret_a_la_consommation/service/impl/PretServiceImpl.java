@@ -24,6 +24,13 @@ public class PretServiceImpl implements PretService {
      * @throws MontantExcessifException
      * @author Y-Vector
      */
+    /**
+     * Ajout d'un prêt
+     *
+     * @param pret à ajouter
+     * @return pret ajouté
+     * @throws MontantExcessifException
+     */
     @Override
     public Pret ajouterPret(Pret pret) throws MontantExcessifException {
 
@@ -34,6 +41,16 @@ public class PretServiceImpl implements PretService {
         return pret;
     }
 
+    /**
+     * Ajout d'un prêt défini par les paramètres suivants :
+     *
+     * @param montantDemande long
+     * @param dateEffet      LocalDate
+     * @param observations   String
+     * @param client         objet Client
+     * @param taux           objet Taux
+     * @return ajouterPret(pret)
+     */
     @Override
     public Pret ajouterPret(long montantDemande, LocalDate dateEffet, String observations, Client client, Taux taux) {
 

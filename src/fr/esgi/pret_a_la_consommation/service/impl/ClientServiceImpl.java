@@ -14,6 +14,12 @@ public class ClientServiceImpl implements ClientService {
      * @param prenom du client à ajouter (String)
      * @return nouveau client
      */
+    /**
+     * Création d'un
+     * @param nom
+     * @param prenom
+     * @return
+     */
     @Override
     public Client creerClient(String nom, String prenom){
         Client newClient = new Client(nom, prenom);
@@ -33,6 +39,16 @@ public class ClientServiceImpl implements ClientService {
                 return client;
             }
         }
-        throw new IllegalArgumentException("L'id fourni ne correspond à aucun client");
+        return null;
+    }
+
+    @Override
+    public String afficherClients() {
+        String affiche= "";
+        for (Client client: clients
+        ) {
+            affiche += client.toString() + "\n";
+        }
+        return affiche;
     }
 }
