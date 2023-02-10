@@ -31,6 +31,7 @@ public class Client implements Comparator<Client> {
         return prenom;
     }
 
+    public long getId() { return id; }
     /**
      * Comparateur sur le nom des clients
      * @param client1 the first object to be compared.

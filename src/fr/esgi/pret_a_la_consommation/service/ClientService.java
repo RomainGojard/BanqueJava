@@ -8,7 +8,7 @@ public interface ClientService {
 
     public Client creerClient(String nom, String prenom);
 
-    public Client recupererClients();
+    public Client recupererClients(long id);
 
 
 
